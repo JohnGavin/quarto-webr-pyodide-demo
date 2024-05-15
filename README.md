@@ -1,6 +1,10 @@
 # Authoring Space with Continuous Deployment
 
-This repository houses an example workflow that allows for continuous deployment of versioned Quarto documents that have been augmented by Quarto Extensions like [`{quarto-webr}`](https://github.com/coatless/quarto-webr) and [`{quarto-pyodide}`](https://github.com/coatless-quarto/pyodide). Feel free to clone or fork the repository!
+repo is  
++ example workflow for Quarto documents 
+  + augmented by Quarto Extensions like
+  + [`{quarto-webr}`](https://github.com/coatless/quarto-webr) and 
+  + [`{quarto-pyodide}`](https://github.com/coatless-quarto/pyodide)
 
 ## Authoring Workspaces
 
@@ -11,10 +15,12 @@ to create
 [two different authoring workspaces](.devcontainer/) 
 that work with 
 [GitHub Codespaces](https://github.com/features/codespaces). 
-These authoring spaces are setup to immediately allow you to modify and/or explore 
-[`quarto-webr`](https://github.com/coatless/quarto-webr) and 
-[`quarto-pyodide`](https://github.com/coatless-quarto/pyodide) 
-projects without needing to install authoring software (Quarto, RStudio or VS Code, and the extensions) on your local computer.
+These authoring spaces are setup to immediately to modify 
++ projects without needing to install software 
+  + (Quarto, RStudio or VS Code, and the extensions) 
+  + on your local computer.
++ [`quarto-webr`](https://github.com/coatless/quarto-webr)
++ [`quarto-pyodide`](https://github.com/coatless-quarto/pyodide) 
 
 > [!NOTE] 
 > 

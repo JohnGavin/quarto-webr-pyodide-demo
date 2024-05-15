@@ -16,3 +16,12 @@ website:
         file: quarto-webr.qmd
       - text: "pyodide-python - quarto-pyodide.qmd"
         file: quarto-pyodide.qmd
+      - href: index.qmd
+        text: Home
+      - about.qmd
+
+#format:
+#  html:
+#    theme: cosmo
+#    css: styles.css
+#    toc: true
