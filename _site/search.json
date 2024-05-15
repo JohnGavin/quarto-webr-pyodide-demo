@@ -23,15 +23,22 @@
   {
     "objectID": "frankfurter.app.html",
     "href": "frankfurter.app.html",
-    "title": "FX currency via frankfurter.app",
+    "title": "FX currencies via frankfurter.app",
     "section": "",
-    "text": "thecoatlessprofessor…dynamic-interactions-wasm Source: datageeek.com[^1] [^1]: (url)[https://github.com/JohnGavin/quarto-webr-pyodide-demo/actions/workflows/static.yml]\nReference[^1] [^1]: frankfurter.app/docs/#timeseries\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+    "text": "# webr::install(\"pacman\")\n# install.packages(\"pacman\")\npacman::p_load(jsonlite, dplyr, ggplot2)\nsearch() |&gt; head(4)\n\n[1] \".GlobalEnv\"       \"package:ggplot2\"  \"package:dplyr\"    \"package:jsonlite\"\n\n.libPaths()\n\n[1] \"/usr/local/lib/R/site-library\" \"/usr/local/lib/R/library\"\nknitr::knit_engines$set(webr = function(options) {\n  # the source code is in options$code; just do\n  # whatever you want with it\n  # https://quarto-webr.thecoatlessprofessor.com/qwebr-troubleshooting.html#engine-registration\n  # https://bookdown.org/yihui/rmarkdown-cookbook/custom-engine.html\n  knitr::knit_engines$set()\n})\ngert::git_add('frankfurter.app.qmd') |&gt; \n  filter(!staged) |&gt; \n  pull(file) |&gt; # all unstaged files\n  gert::git_add() # add all other files to staging\ngert::git_commit_all('commit gert sample commands')\ngert::git_pull()\ngert::git_push()\nquarto preview\nquarto render"
   },
   {
     "objectID": "frankfurter.app.html#source",
     "href": "frankfurter.app.html#source",
     "title": "FX currencies via frankfurter.app",
     "section": "Source",
-    "text": "Source\n\nthecoatlessprofessor…dynamic-interactions-wasm\n\nSource: datageeek.com[^1] [^1]: (url)[https://github.com/JohnGavin/quarto-webr-pyodide-demo/actions/workflows/static.yml]\n\nReference[^1] [^1]: frankfurter.app/docs/#timeseries\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n{webr-r, eval = FALSE} ggplot2::ggplot(Orange) +   geom_line(aes(x = age,                 y = circumference,                 colour = Tree))"
+    "text": "Source\n\n(thecoatlessprofessor…dynamic-interactions-wasm)[https://talks.thecoatlessprofessor.com/stats352-guest-lectures-on-dynamic-interactions-wasm/day02d-currency.html]\n\nSource: datageeek.com[^1] [^1]: (url)[https://github.com/JohnGavin/quarto-webr-pyodide-demo/actions/workflows/static.yml]\n\nReference[^2] [^2]: frankfurter.app/docs/#timeseries"
+  },
+  {
+    "objectID": "frankfurter.app.html#code",
+    "href": "frankfurter.app.html#code",
+    "title": "FX currencies via frankfurter.app",
+    "section": "Code",
+    "text": "Code\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n#| label: ggplott\n\ncurrency_df |&gt; \n  ggplot() +\n  geom_line(aes(x = rates_date,\n                y = rate,\n                colour = base)) +\n  # title = \"Rate per USD ($)\" +\n  theme(legend.title = element_blank(),\n        legend.position = \"bottom\",\n        axis.title.x = element_blank()  )"
   }
 ]

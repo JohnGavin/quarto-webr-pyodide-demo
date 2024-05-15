@@ -1,16 +1,17 @@
 ---
 params:
   source: "https://github.com/JohnGavin/quarto-webr-pyodide-demo/actions/workflows/static.yml"
-  source_upstream: "https://talks.thecoatlessprofessor.com/stats352-guest-lectures-on-dynamic-interactions-wasm/day02d-currency.html
+  source_upstream: "https://talks.thecoatlessprofessor.com/stats352-guest-lectures-on-dynamic-interactions-wasm/day02d-currency.html"
 webr: 
   # pks in doc header's packages key _above_ filters statement
+  show-startup-message: false # disable webR status 
   packages: # install on doc open
   - "jsonlite"
+  - "dplyr"
   - "dplyr"
   - "ggplot2"
   - "pacman"
   # ['pacman', 'ggplot2', 'dplyr'] 
-  show-startup-message: false # disable webR status 
   # https://quarto-webr.thecoatlessprofessor.com/qwebr-internal-cell.html
     # context: output # only shows chunk outputs
     # context: setup # shows neither output nor code
@@ -52,14 +53,29 @@ pacman::p_load(jsonlite, dplyr, ggplot2)
 search() |> head(4)
 .libPaths()
 ```
+```{r knit_engines, eval = FALSE}
+knitr::knit_engines$set(webr = function(options) {
+  # the source code is in options$code; just do
+  # whatever you want with it
+  # https://quarto-webr.thecoatlessprofessor.com/qwebr-troubleshooting.html#engine-registration
+  # https://bookdown.org/yihui/rmarkdown-cookbook/custom-engine.html
+  knitr::knit_engines$set()
+})
+
+```
+
 ```{r gert, eval = FALSE}
 gert::git_add('frankfurter.app.qmd') |> 
   filter(!staged) |> 
   pull(file) |> # all unstaged files
   gert::git_add() # add all other files to staging
-gert::git_commit_all('commit all staged files')
+gert::git_commit_all('commit gert sample commands')
 gert::git_pull()
 gert::git_push()
+```
+```{r quarto, eval = FALSE}
+quarto preview
+quarto render
 ```
 
 
@@ -73,18 +89,17 @@ Source: datageeek.com[^1]
 [^2]: [frankfurter.app/docs/#timeseries](frankfurter.app/docs/#timeseries)
 
 ## Code
-```{webr-r download.file, eval = false}
-#| label: download.filee
+
+```{webr download.file}
+#| eval: FALSE
 data_url = "https://www.frankfurter.app/2024-05-01..?to=USD"
 download.file(data_url, "./currency-data.json")
 ```
-```{webr-r fromJSON}
-#| label: fromJSONN
+```{webr fromJSONN}
 currency_json <- fromJSON("./currency-data.json")
 ```
 
-```{webr-r df 2 tibble}
-#| label: tibble
+```{webr df 2 tibble}
 currency_df <- data.frame(
   amount = currency_json$amount,
   base = currency_json$base,

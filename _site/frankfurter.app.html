@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -250,7 +284,7 @@ body.reveal.quarto-dark div.qwebr-console-area {
 // Document level settings ----
 
 // Determine if we need to install R packages
-globalThis.qwebrInstallRPackagesList = ['jsonlite', 'dplyr', 'ggplot2', 'pacman'];
+globalThis.qwebrInstallRPackagesList = ['jsonlite', 'dplyr', 'dplyr', 'ggplot2', 'pacman'];
 
 // Specify possible locations to search for the repository
 globalThis.qwebrPackageRepoURLS = ['https://repo.r-wasm.org/'];
@@ -272,7 +306,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"context":"interactive","results":"markup","editor-max-height":"","echo":"false","editor-quick-suggestions":"false","out-height":"","read-only":"false","message":"true","fig-cap":"","warning":"true","autorun":"false","out-width":"700px","dpi":72,"comment":"","editor-font-scale":1,"label":"pacman","fig-height":5,"fig-width":7,"output":"false","classes":""},"code":"pacman::p_load(jsonlite, dplyr, ggplot2)","id":1},{"options":{"context":"interactive","results":"markup","editor-max-height":"","editor-quick-suggestions":"false","out-height":"","read-only":"false","message":"true","fig-cap":"","warning":"true","autorun":"false","out-width":"700px","dpi":72,"comment":"","editor-font-scale":1,"label":"unnamed-chunk-2","fig-height":5,"fig-width":7,"output":"true","classes":""},"code":"data_url = \"https://www.frankfurter.app/2024-05-01..?to=USD\"\ndownload.file(data_url, \"currency-data.json\")","id":2},{"options":{"context":"interactive","results":"markup","editor-max-height":"","editor-quick-suggestions":"false","out-height":"","read-only":"false","message":"true","fig-cap":"","warning":"true","autorun":"false","out-width":"700px","dpi":72,"comment":"","editor-font-scale":1,"label":"unnamed-chunk-3","fig-height":5,"fig-width":7,"output":"true","classes":""},"code":"currency_json <- fromJSON(\"currency-data.json\")","id":3},{"options":{"context":"interactive","results":"markup","editor-max-height":"","editor-quick-suggestions":"false","out-height":"","read-only":"false","message":"true","fig-cap":"","warning":"true","autorun":"false","out-width":"700px","dpi":72,"comment":"","editor-font-scale":1,"label":"unnamed-chunk-4","fig-height":5,"fig-width":7,"output":"true","classes":""},"code":"currency_df <- data.frame(\n  amount = currency_json$amount,\n  base = currency_json$base,\n  start_date = currency_json$start_date,\n  end_date = currency_json$end_date,\n  rates_date = as.Date(names(currency_json$rates)),\n  rate = unlist(lapply(currency_json$rates, function(x) x$USD))\n) |> \n  as_tibble()\ncurrency_df |> head()","id":4}];
+globalThis.qwebrCellDetails = [{"id":1,"code":"data_url = \"https://www.frankfurter.app/2024-05-01..?to=USD\"\ndownload.file(data_url, \"./currency-data.json\")","options":{"out-width":"700px","autorun":"false","fig-height":5,"comment":"","warning":"true","fig-cap":"","results":"markup","read-only":"false","message":"true","dpi":72,"editor-max-height":"","fig-width":7,"output":"true","classes":"","editor-quick-suggestions":"false","label":"unnamed-chunk-1","out-height":"","editor-font-scale":1,"context":"interactive"}},{"id":2,"code":"currency_json <- fromJSON(\"./currency-data.json\")","options":{"out-width":"700px","autorun":"false","fig-height":5,"comment":"","warning":"true","fig-cap":"","results":"markup","read-only":"false","message":"true","dpi":72,"editor-max-height":"","fig-width":7,"output":"true","classes":"","editor-quick-suggestions":"false","label":"unnamed-chunk-2","out-height":"","editor-font-scale":1,"context":"interactive"}},{"id":3,"code":"currency_df <- data.frame(\n  amount = currency_json$amount,\n  base = currency_json$base,\n  start_date = currency_json$start_date,\n  end_date = currency_json$end_date,\n  rates_date = as.Date(names(currency_json$rates)),\n  rate = unlist(lapply(currency_json$rates, function(x) x$USD))\n) |> \n  as_tibble()\ncurrency_df |> head()","options":{"out-width":"700px","autorun":"false","fig-height":5,"comment":"","warning":"true","fig-cap":"","results":"markup","read-only":"false","message":"true","dpi":72,"editor-max-height":"","fig-width":7,"output":"true","classes":"","editor-quick-suggestions":"false","label":"unnamed-chunk-3","out-height":"","editor-font-scale":1,"context":"interactive"}}];
 
 </script>
 <script type="module">
@@ -1421,24 +1455,76 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </header>
 
 
-<div id="qwebr-insertion-location-1"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># webr::install("pacman")</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("pacman")</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(jsonlite, dplyr, ggplot2)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">search</span>() <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] ".GlobalEnv"       "package:ggplot2"  "package:dplyr"    "package:jsonlite"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.libPaths</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "/usr/local/lib/R/site-library" "/usr/local/lib/R/library"     </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>knit_engines<span class="sc">$</span><span class="fu">set</span>(<span class="at">webr =</span> <span class="cf">function</span>(options) {</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># the source code is in options$code; just do</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># whatever you want with it</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># https://quarto-webr.thecoatlessprofessor.com/qwebr-troubleshooting.html#engine-registration</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># https://bookdown.org/yihui/rmarkdown-cookbook/custom-engine.html</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span>knit_engines<span class="sc">$</span><span class="fu">set</span>()</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>gert<span class="sc">::</span><span class="fu">git_add</span>(<span class="st">'frankfurter.app.qmd'</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>staged) <span class="sc">|&gt;</span> </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(file) <span class="sc">|&gt;</span> <span class="co"># all unstaged files</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  gert<span class="sc">::</span><span class="fu">git_add</span>() <span class="co"># add all other files to staging</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>gert<span class="sc">::</span><span class="fu">git_commit_all</span>(<span class="st">'commit gert sample commands'</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>gert<span class="sc">::</span><span class="fu">git_pull</span>()</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>gert<span class="sc">::</span><span class="fu">git_push</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>quarto preview</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>quarto render</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <section id="source" class="level2">
 <h2 class="anchored" data-anchor-id="source">Source</h2>
 <ul>
-<li><a href="https://talks.thecoatlessprofessor.com/stats352-guest-lectures-on-dynamic-interactions-wasm/day02d-currency.html">thecoatlessprofessor…dynamic-interactions-wasm</a></li>
+<li>(thecoatlessprofessor…dynamic-interactions-wasm)[https://talks.thecoatlessprofessor.com/stats352-guest-lectures-on-dynamic-interactions-wasm/day02d-currency.html]</li>
 </ul>
 <p>Source: datageeek.com[^1] [^1]: (url)[https://github.com/JohnGavin/quarto-webr-pyodide-demo/actions/workflows/static.yml]</p>
 <ul>
-<li>Reference[^1] [^1]: <a href="frankfurter.app/docs/#timeseries">frankfurter.app/docs/#timeseries</a></li>
+<li>Reference[^2] [^2]: <a href="frankfurter.app/docs/#timeseries">frankfurter.app/docs/#timeseries</a></li>
 </ul>
+</section>
+<section id="code" class="level2">
+<h2 class="anchored" data-anchor-id="code">Code</h2>
+<div class="cell">
+<div id="qwebr-insertion-location-1"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+<div class="cell">
 <div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+<div class="cell">
 <div id="qwebr-insertion-location-3"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div id="qwebr-insertion-location-4"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p><code>{webr-r, eval = FALSE} ggplot2::ggplot(Orange) +   geom_line(aes(x = age,                 y = circumference,                 colour = Tree))</code></p>
+</div>
+<pre class="{webr-r ggplot}"><code>#| label: ggplott
+
+currency_df |&gt; 
+  ggplot() +
+  geom_line(aes(x = rates_date,
+                y = rate,
+                colour = base)) +
+  # title = "Rate per USD ($)" +
+  theme(legend.title = element_blank(),
+        legend.position = "bottom",
+        axis.title.x = element_blank()  )</code></pre>
 
 
 </section>
