@@ -25,6 +25,8 @@ website:
         file: index.qmd
       - href: index.qmd
         text: "Homee"
+      - text: "frankfurter.app.qmd"
+        file: frankfurter.app.qmd
       - text: "quarto-webr.qmd"
         file: quarto-webr.qmd
       - text: "quarto-pyodide.qmd"

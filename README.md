@@ -8,7 +8,7 @@
 > [!CLI] 
 > 
 > To build the website
-> [johngavin.github.io/quarto-webr-pyodide-demo](https://johngavin.github.io/quarto-webr-pyodide-demo])
+> [johngavin.github.io/quarto-webr-pyodide-demo](https://johngavin.github.io/quarto-webr-pyodide-demo)
 > # terminal in Rstudio in browser
 > quarto preview
 > quarto render 

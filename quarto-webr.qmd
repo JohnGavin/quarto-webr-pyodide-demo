@@ -1,9 +1,19 @@
 ---
-title: webR in Quarto HTML Documents
-format: html
-engine: knitr
+params:
+  source: "https://github.com/JohnGavin/quarto-webr-pyodide-demo/actions/workflows/static.yml"
 filters:
   - webr
+  # - pyodide
+webr: 
+  show-startup-message: false # disable webR status 
+  packages: ['ggplot2', 'dplyr'] # install on document open
+# https://quarto-webr.thecoatlessprofessor.com/qwebr-internal-cell.html
+# context: output # only shows the output
+# context: setup # shows neither output nor code.
+engine: knitr
+format: html
+date: "`r Sys.Date()`"
+title: webR in Quarto HTML Documents
 ---
 
 This is a webr-enabled code cell in a Quarto HTML document.
