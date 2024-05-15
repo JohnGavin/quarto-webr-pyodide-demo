@@ -1,5 +1,23 @@
 # Authoring Space with Continuous Deployment
 
+[johngavin.github.io/quarto-webr-pyodide-demo](https://johngavin.github.io/quarto-webr-pyodide-demo)
+[quarto-webr.qmd](quarto-webr.qmd#section1)
+[quarto-pyodide.qmd](quarto-pyodide.qmd)
+[about](about.qmd#section2)
+
+> [!CLI] 
+> 
+> To build the website
+> [johngavin.github.io/quarto-webr-pyodide-demo](https://johngavin.github.io/quarto-webr-pyodide-demo])
+> # terminal in Rstudio in browser
+> quarto preview
+> quarto render 
+> # R console in VSCode (not Rstudio)
+> gert::git_commit_all('quarto render not quarto preview')
+> gert::git_pull()
+> gert::git_push()
+> [.../actions/workflows/static.yml](https://github.com/JohnGavin/quarto-webr-pyodide-demo/actions/workflows/static.yml)
+
 repo is  
 + example workflow for Quarto documents 
   + augmented by Quarto Extensions like
@@ -25,7 +43,7 @@ These authoring spaces are setup to immediately to modify
 > [!NOTE] 
 > 
 > Codespaces have 
-> [up to 60 core hours and 15 GB free per month](https://github.com/features/codespaces#pricing).
+> [upto 60 core hours + 15 GB free per month](https://github.com/features/codespaces#pricing).
 
 
 ### VS Code 

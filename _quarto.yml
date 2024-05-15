@@ -1,8 +1,19 @@
 project:
   type: website
   output-dir: _site
+  render:
+    # https://quarto.org/docs/websites/#render-targets
+    - "*.qmd"
+    - "!ignored.qmd"
+    - "!ignored-dir/"
 
 website:  
+  # johngavin.github.io/quarto-webr-pyodide-demo
+  # quarto preview
+  # quarto render 
+  # gert::git_commit_all('quarto render not quarto preview')
+  # gert::git_pull()
+  # gert::git_push()
   repo-url: https://github.com/JohnGavin/quarto-webr-pyodide-demo
   # https://github.com/coatless-quarto/quarto-webr-pyodide-demo
   repo-actions: [edit, issue]
@@ -12,12 +23,13 @@ website:
     left:
       - text: "Home"
         file: index.qmd
-      - text: "webr-r - quarto-webr.qmd"
-        file: quarto-webr.qmd
-      - text: "pyodide-python - quarto-pyodide.qmd"
-        file: quarto-pyodide.qmd
       - href: index.qmd
-        text: Home
+        text: "Homee"
+      - text: "quarto-webr.qmd"
+        file: quarto-webr.qmd
+      - text: "quarto-pyodide.qmd"
+        file: quarto-pyodide.qmd
+      - text: "About - about.qmd"
       - about.qmd
 
 #format:
