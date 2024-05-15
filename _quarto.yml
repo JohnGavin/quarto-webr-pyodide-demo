@@ -3,15 +3,16 @@ project:
   output-dir: _site
 
 website:  
-  repo-url: https://github.com/coatless-quarto/quarto-webr-pyodide-demo
+  repo-url: https://github.com/JohnGavin/quarto-webr-pyodide-demo
+  # https://github.com/coatless-quarto/quarto-webr-pyodide-demo
   repo-actions: [edit, issue]
-  title: "webR and Pyodide in Quarto"
+  title: "Quarto: webR & Pyodide"
   navbar:
     search: false
     left:
       - text: "Home"
         file: index.qmd
-      - text: "quarto-webr"
+      - text: "webr-r - quarto-webr.qmd"
         file: quarto-webr.qmd
-      - text: "quarto-pyodide"
+      - text: "pyodide-python - quarto-pyodide.qmd"
         file: quarto-pyodide.qmd

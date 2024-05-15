@@ -4,11 +4,22 @@ This repository houses an example workflow that allows for continuous deployment
 
 ## Authoring Workspaces
 
-We use [Development Containers (`devcontainers`)](https://containers.dev/) to create [two different authoring workspaces](.devcontainer/) that work with [GitHub Codespaces](https://github.com/features/codespaces). These authoring spaces are setup to immediately allow you to modify and/or explore [`quarto-webr`](https://github.com/coatless/quarto-webr) and [`quarto-pyodide`](https://github.com/coatless-quarto/pyodide) projects without needing to install authoring software (Quarto, RStudio or VS Code, and the extensions) on your local computer.
+We use 
+[Development Containers (`devcontainers`)]
+(https://containers.dev/) 
+to create 
+[two different authoring workspaces](.devcontainer/) 
+that work with 
+[GitHub Codespaces](https://github.com/features/codespaces). 
+These authoring spaces are setup to immediately allow you to modify and/or explore 
+[`quarto-webr`](https://github.com/coatless/quarto-webr) and 
+[`quarto-pyodide`](https://github.com/coatless-quarto/pyodide) 
+projects without needing to install authoring software (Quarto, RStudio or VS Code, and the extensions) on your local computer.
 
 > [!NOTE] 
 > 
-> Codespaces are available to Students and Teachers for free [up to 180 core hours per month](https://docs.github.com/en/education/manage-coursework-with-github-classroom/integrate-github-classroom-with-an-ide/using-github-codespaces-with-github-classroom#about-github-codespaces) through [GitHub Education](https://education.github.com/). Otherwise, you will have [up to 60 core hours and 15 GB free per month](https://github.com/features/codespaces#pricing).
+> Codespaces have 
+> [up to 60 core hours and 15 GB free per month](https://github.com/features/codespaces#pricing).
 
 
 ### VS Code 
@@ -19,11 +30,15 @@ If you are comfortable with VS Code, you can try out the authoring space by clic
 
 ### RStudio
 
-We also make available an RStudio Authoring Space that requires a few more steps. You can access the space by clicking on:
+RStudio Authoring Space requires a few more steps. 
+You can access the space by clicking on:
 
 [![Open RStudio Authoring Workspace in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/coatless-quarto/quarto-webr-pyodide-demo?devcontainer_path=.devcontainer%2Frstudio%2Fdevcontainer.json)
 
-After the authoring space loads, click on the "Open in Browser" button in the lower right hand side to be taken into a new browser window with RStudio running: 
+After the authoring space loads, 
+click on the 
+"Open in Browser" button 
+in the lower right hand side to be taken into a new browser window with RStudio running: 
 
 ![Terminal tab with "Your application (RStudio) is running on" notification with "Open in Browser" button](images/vs-code-terminal-launch-rstudio-notification-closeup.png)
 

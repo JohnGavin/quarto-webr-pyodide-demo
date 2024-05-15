@@ -4,5 +4,11 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		//"quarto.path": "/usr/local/bin/quarto"
+	},
+	//"features": {
+	//	"ghcr.io/rocker-org/devcontainer-features/quarto-cli:1": {}
+	//}
+	
 }
