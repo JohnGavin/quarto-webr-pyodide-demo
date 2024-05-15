@@ -1,0 +1,15 @@
+{
+  "hash": "dbf3206a05af59a4349a197dec579fab",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\nparams:\n  source: \"https://github.com/JohnGavin/quarto-webr-pyodide-demo/actions/workflows/static.yml\"\nwebr: \n  # pks in doc header's packages key _above_ filters statement\n  packages: # install on doc open\n  - \"jsonlite\"\n  - \"dplyr\"\n  - \"ggplot2\"\n  - \"pacman\"\n  # ['pacman', 'ggplot2', 'dplyr'] \n  show-startup-message: false # disable webR status \n  # https://quarto-webr.thecoatlessprofessor.com/qwebr-internal-cell.html\n    # context: output # only shows chunk outputs\n    # context: setup # shows neither output nor code\nexecute:\n  freeze: auto\n  echo: true\n  message: true\n  warning: true\n  fig-align: center\n  fig-width: 12\n  fig-height: 8\n  editor_options: \n    chunk_output_type: inline\n    code-overflow: wrap\n  html:\n    code-fold: true\n    code-tools: true\nengine: knitr\ntags: [\"timeseries\", \"FX\", \"exchange rates\",\n  \"currency\"]\nfilters:\n  - webr\n  # - pyodide\nformat: html\ndate: \"2024-05-15\"\ntitle: \"FX currencies via frankfurter.app\"\nsubtitle: \"Dynamic webr\"\nfooter: \"https://github.com/JohnGavin/quarto-webr-pyodide-demo/actions/workflows/static.yml\"\neditor: source\n---\n\n\n```{webr-r}\n#| label: pacman\n#| echo: false\n#| output: false\npacman::p_load(jsonlite, dplyr, ggplot2)\n\n```\n\n\n## Source\n+ [thecoatlessprofessor...dynamic-interactions-wasm](https://talks.thecoatlessprofessor.com/stats352-guest-lectures-on-dynamic-interactions-wasm/day02d-currency.html)\n\nSource: datageeek.com[^1]\n[^1]: (url)[https://github.com/JohnGavin/quarto-webr-pyodide-demo/actions/workflows/static.yml] \n\n+ Reference[^1]\n[^1]: [frankfurter.app/docs/#timeseries](frankfurter.app/docs/#timeseries)\n```{webr-r}\ndata_url = \"https://www.frankfurter.app/2024-05-01..?to=USD\"\ndownload.file(data_url, \"currency-data.json\")\n```\n```{webr-r}\ncurrency_json <- fromJSON(\"currency-data.json\")\n```\n\n```{webr-r}\ncurrency_df <- data.frame(\n  amount = currency_json$amount,\n  base = currency_json$base,\n  start_date = currency_json$start_date,\n  end_date = currency_json$end_date,\n  rates_date = as.Date(names(currency_json$rates)),\n  rate = unlist(lapply(currency_json$rates, function(x) x$USD))\n) |> \n  as_tibble()\ncurrency_df |> head()\n```\n\n```{webr-r, eval = FALSE}\nggplot2::ggplot(Orange) +\n  geom_line(aes(x = age,\n                y = circumference,\n                colour = Tree))\n```\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

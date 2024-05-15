@@ -1,0 +1,104 @@
+---
+params:
+  source: "https://github.com/JohnGavin/quarto-webr-pyodide-demo/actions/workflows/static.yml"
+  source_upstream: "https://talks.thecoatlessprofessor.com/stats352-guest-lectures-on-dynamic-interactions-wasm/day02d-currency.html
+webr: 
+  # pks in doc header's packages key _above_ filters statement
+  packages: # install on doc open
+  - "jsonlite"
+  - "dplyr"
+  - "ggplot2"
+  - "pacman"
+  # ['pacman', 'ggplot2', 'dplyr'] 
+  show-startup-message: false # disable webR status 
+  # https://quarto-webr.thecoatlessprofessor.com/qwebr-internal-cell.html
+    # context: output # only shows chunk outputs
+    # context: setup # shows neither output nor code
+execute:
+  freeze: auto
+  echo: true
+  message: true
+  warning: true
+  fig-align: center
+  fig-width: 12
+  fig-height: 8
+  editor_options: 
+    chunk_output_type: inline
+    code-overflow: wrap
+  html:
+    code-fold: true
+    code-tools: true
+engine: knitr
+tags: ["timeseries", "FX", "exchange rates",
+  "currency"]
+filters:
+  - webr
+  # - pyodide
+format: html
+date: "`r Sys.Date()`"
+title: "FX currencies via frankfurter.app"
+subtitle: "Dynamic webr"
+footer: "`r params$source`"
+editor: source
+---
+
+```{r}
+#| label: pacman
+#| echo: true
+#| output: true
+# webr::install("pacman")
+# install.packages("pacman")
+pacman::p_load(jsonlite, dplyr, ggplot2)
+search() |> head(4)
+.libPaths()
+```
+
+
+## Source
++ (thecoatlessprofessor...dynamic-interactions-wasm)[`r params$source_upstream`]
+
+Source: datageeek.com[^1]
+[^1]: (url)[`r params$source`] 
+
++ Reference[^2]
+[^2]: [frankfurter.app/docs/#timeseries](frankfurter.app/docs/#timeseries)
+
+## Code
+```{webr-r download.file, eval = false}
+#| label: download.filee
+data_url = "https://www.frankfurter.app/2024-05-01..?to=USD"
+download.file(data_url, "./currency-data.json")
+```
+```{webr-r fromJSON}
+#| label: fromJSONN
+currency_json <- fromJSON("./currency-data.json")
+```
+
+```{webr-r df 2 tibble}
+#| label: tibble
+currency_df <- data.frame(
+  amount = currency_json$amount,
+  base = currency_json$base,
+  start_date = currency_json$start_date,
+  end_date = currency_json$end_date,
+  rates_date = as.Date(names(currency_json$rates)),
+  rate = unlist(lapply(currency_json$rates, function(x) x$USD))
+) |> 
+  as_tibble()
+currency_df |> head()
+```
+
+```{webr-r ggplot}
+#| label: ggplott
+
+currency_df |> 
+  ggplot() +
+  geom_line(aes(x = rates_date,
+                y = rate,
+                colour = base)) +
+  # title = "Rate per USD ($)" +
+  theme(legend.title = element_blank(),
+        legend.position = "bottom",
+        axis.title.x = element_blank()  )
+```
+

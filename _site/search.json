@@ -1,0 +1,37 @@
+[
+  {
+    "objectID": "quarto-webr.html",
+    "href": "quarto-webr.html",
+    "title": "webR in Quarto HTML Documents",
+    "section": "",
+    "text": "This is a webr-enabled code cell in a Quarto HTML document.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Pairing {quarto-webr} and {quarto-pyodide} with CD",
+    "section": "",
+    "text": "In this example, we can see what a continuous deployment of Quarto documents using {quarto-webr} and {quarto-pyodide}.\nAccess the documents by clicking on the links to the left."
+  },
+  {
+    "objectID": "quarto-pyodide.html",
+    "href": "quarto-pyodide.html",
+    "title": "Pyodide in Quarto HTML Documents",
+    "section": "",
+    "text": "This is a pyodide-enabled code cell in a Quarto HTML document.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "frankfurter.app.html",
+    "href": "frankfurter.app.html",
+    "title": "FX currency via frankfurter.app",
+    "section": "",
+    "text": "thecoatlessprofessor…dynamic-interactions-wasm Source: datageeek.com[^1] [^1]: (url)[https://github.com/JohnGavin/quarto-webr-pyodide-demo/actions/workflows/static.yml]\nReference[^1] [^1]: frankfurter.app/docs/#timeseries\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "frankfurter.app.html#source",
+    "href": "frankfurter.app.html#source",
+    "title": "FX currencies via frankfurter.app",
+    "section": "Source",
+    "text": "Source\n\nthecoatlessprofessor…dynamic-interactions-wasm\n\nSource: datageeek.com[^1] [^1]: (url)[https://github.com/JohnGavin/quarto-webr-pyodide-demo/actions/workflows/static.yml]\n\nReference[^1] [^1]: frankfurter.app/docs/#timeseries\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n{webr-r, eval = FALSE} ggplot2::ggplot(Orange) +   geom_line(aes(x = age,                 y = circumference,                 colour = Tree))"
+  }
+]
